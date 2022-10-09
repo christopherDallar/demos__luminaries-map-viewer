@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { menuItem } from '@appTypes/tool-bar.types'
+import { MenuItem } from '@appTypes/tool-bar.types'
 
 @Component({
   selector: 'app-tool-bar',
@@ -7,7 +7,7 @@ import { menuItem } from '@appTypes/tool-bar.types'
   styleUrls: ['./tool-bar.component.css'],
 })
 export class ToolBarComponent implements OnInit {
-  menuItems: menuItem[] = [
+  menuItems: MenuItem[] = [
     {
       path: 'informacion-elemento',
       iconClass: 'fa-solid fa-circle-info',
@@ -15,9 +15,9 @@ export class ToolBarComponent implements OnInit {
       active: true,
     },
     {
-      path: 'informacion-elemento',
-      iconClass: 'fa-solid fa-circle-info',
-      title: 'Información de elemento',
+      path: 'analisis-grafico',
+      iconClass: 'fas fa-chart-pie',
+      title: 'Análisis gráfico',
     },
   ]
 

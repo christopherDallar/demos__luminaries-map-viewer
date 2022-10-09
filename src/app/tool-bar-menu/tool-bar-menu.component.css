@@ -8,6 +8,10 @@
   animation-timing-function: linear;
 }
 
+.icon-active {
+  color: green;
+}
+
 .icon-button:first-child {
   animation-direction: alternate-reverse;
 }

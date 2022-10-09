@@ -1,13 +1,15 @@
 <div class="row p-2 shadow-sm mb-3 bg-body rounded">
   <div class="d-flex gap-2">
-    <i
-      class="fa-solid fa-circle-info icon-button fs-5 p-2 shadow-sm bg-body rounded"
-      routerLink="informacion-elemento"
-    ></i>
-    <i
-      class="fas fa-chart-pie icon-button fs-5 p-2 shadow-sm bg-body rounded"
-      routerLink="analisis-grafico"
-    ></i>
+    <ng-container *ngFor="let item of menuItems">
+      <i
+        [ngClass]="{ 'icon-active': item.active }"
+        class="{{
+          item.iconClass
+        }} icon-button fs-5 p-2 shadow-sm bg-body rounded"
+        [routerLink]="[item.path]"
+        (click)="handleClick(item)"
+      ></i>
+    </ng-container>
   </div>
-  <h2 class="fs-5 mt-4">Información de elemento</h2>
+  <h2 class="fs-5 mt-4">{{ currentTitle }}</h2>
 </div>
