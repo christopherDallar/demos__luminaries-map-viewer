@@ -1,10 +1,11 @@
 .container {
-  width: 27.5%;
+  /* width: 27.5%; */
   height: 100vh;
   background-color: #fff;
   color: #4f4f4f;
   font-size: 0.875rem;
   padding: 1rem;
+  transition: linear 0.2s;
 
   position: absolute;
   top: 0;
@@ -14,4 +15,26 @@
 
 .outlet-container {
   height: 90%;
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    /* width: 100%; */
+    height: 45vh;
+
+    top: initial;
+    bottom: 0;
+  }
+
+  .outlet-container {
+    height: 69.7%;
+  }
+
+  .expand-sidebar-container {
+    height: 100vh;
+  }
+
+  .expand-sidebar-container .outlet-container {
+    height: 87%;
+  }
 }

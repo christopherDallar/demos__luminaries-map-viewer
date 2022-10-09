@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { MenuItem } from 'src/app/views/luminaries/types/tool-bar.types'
 
 @Component({
@@ -7,9 +7,12 @@ import { MenuItem } from 'src/app/views/luminaries/types/tool-bar.types'
   styleUrls: ['./tool-bar-menu.component.css'],
 })
 export class ToolBarMenuComponent implements OnInit {
+  @Output() arrowBtnEmitter = new EventEmitter()
   @Input() menuItems: MenuItem[] = []
 
+  rotateArrowBtn = false
   currentTitle = ''
+
   constructor() {}
 
   ngOnInit(): void {
@@ -28,5 +31,10 @@ export class ToolBarMenuComponent implements OnInit {
 
   handleClick(menuItem: MenuItem) {
     this.currentTitle = menuItem.title
+  }
+
+  handleClickArrowButton() {
+    this.rotateArrowBtn = !this.rotateArrowBtn
+    this.arrowBtnEmitter.emit(this.rotateArrowBtn)
   }
 }

@@ -2,8 +2,14 @@
   (pointMarkerSelected)="handlePointMarked($event)"
 ></app-luminaries-map>
 
-<div class="container">
-  <app-tool-bar-menu [menuItems]="menuItems"></app-tool-bar-menu>
+<div
+  class="container col-12 col-sm-4 col-xl-3"
+  [ngClass]="{ 'expand-sidebar-container': expandToolbar }"
+>
+  <app-tool-bar-menu
+    [menuItems]="menuItems"
+    (arrowBtnEmitter)="handleExpandToolbar($event)"
+  ></app-tool-bar-menu>
 
   <div class="overflow-auto outlet-container">
     <router-outlet></router-outlet>

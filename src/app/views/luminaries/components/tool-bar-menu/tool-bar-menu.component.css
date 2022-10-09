@@ -25,6 +25,17 @@
   transition: 0.5s;
 }
 
+.icon-rotate-180deg {
+  transform: rotate(180deg);
+}
+
+.icon-btn-effect:hover {
+  color: green;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
 @keyframes icon-when-page-load {
   0% {
     color: green;

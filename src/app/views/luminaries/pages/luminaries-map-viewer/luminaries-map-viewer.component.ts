@@ -22,11 +22,17 @@ export class LuminariesMapViewerComponent implements OnInit {
     },
   ]
 
+  expandToolbar = false
+
   constructor(private luminariesData: LuminariesService) {}
 
   ngOnInit(): void {}
 
   handlePointMarked(event: any) {
     this.luminariesData.setFields(event.properties)
+  }
+
+  handleExpandToolbar(ev: boolean) {
+    this.expandToolbar = ev
   }
 }
