@@ -1,12 +1,47 @@
-.container{
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-    width: 27.5%;
-    height: 100%;
-    background-color: #FFF;
-    padding: 1rem;
-    color: #4F4F4F;
-    font-size: .875rem;
-    z-index: 1001;
+.container {
+  width: 27.5%;
+  height: 100vh;
+  background-color: #fff;
+  color: #4f4f4f;
+  font-size: 0.875rem;
+  padding: 1rem;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.icon-button {
+  cursor: pointer;
+
+  animation-name: icon-when-page-load;
+  animation-duration: 0.5s;
+  animation-iteration-count: 8;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.icon-button:first-child {
+  animation-direction: alternate-reverse;
+}
+
+.icon-button:hover {
+  color: green;
+}
+
+.icon-button:active {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+@keyframes icon-when-page-load {
+  0% {
+    color: green;
+    transform: scale(1);
+  }
+  100% {
+    color: green;
+    transform: scale(1.1);
+  }
 }
