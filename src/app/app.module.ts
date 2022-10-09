@@ -8,6 +8,7 @@ import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { ToolBarFormComponent } from './tool-bar-form/tool-bar-form.component';
 import { ToolBarInitialMsgComponent } from './tool-bar-initial-msg/tool-bar-initial-msg.component';
 import { ToolBarFormFieldComponent } from './tool-bar-form-field/tool-bar-form-field.component';
+import { ToolBarGraphicComponent } from './tool-bar-graphic/tool-bar-graphic.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ToolBarFormFieldComponent } from './tool-bar-form-field/tool-bar-form-f
     ToolBarComponent,
     ToolBarFormComponent,
     ToolBarInitialMsgComponent,
-    ToolBarFormFieldComponent
+    ToolBarFormFieldComponent,
+    ToolBarGraphicComponent
   ],
   imports: [
     BrowserModule,

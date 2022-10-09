@@ -1,16 +1,21 @@
-import { ToolBarFormFieldComponent } from './tool-bar-form-field/tool-bar-form-field.component'
-import { ToolBarInitialMsgComponent } from './tool-bar-initial-msg/tool-bar-initial-msg.component'
+import { ToolBarFormComponent } from './tool-bar-form/tool-bar-form.component'
+import { ToolBarGraphicComponent } from './tool-bar-graphic/tool-bar-graphic.component'
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
   {
-    path: '',
-    component: ToolBarInitialMsgComponent,
+    path: 'informacion-elemento',
+    component: ToolBarFormComponent,
   },
   {
-    path: 'informacion-elemento',
-    component: ToolBarFormFieldComponent,
+    path: 'analisis-grafico',
+    component: ToolBarGraphicComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'informacion-elemento',
+    pathMatch: 'full',
   },
   {
     path: '**',
