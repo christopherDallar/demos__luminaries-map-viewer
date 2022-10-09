@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { MenuItem } from '@appTypes/tool-bar.types'
+import { LuminariesService } from '@services/luminaries/luminaries.service'
 
 @Component({
   selector: 'app-luminaries-map-viewer',
@@ -21,11 +22,11 @@ export class LuminariesMapViewerComponent implements OnInit {
     },
   ]
 
-  constructor() {}
+  constructor(private luminariesData: LuminariesService) {}
 
   ngOnInit(): void {}
 
   handlePointMarked(event: any) {
-    console.log('handlePointMarked', event)
+    this.luminariesData.setFields(event.properties)
   }
 }

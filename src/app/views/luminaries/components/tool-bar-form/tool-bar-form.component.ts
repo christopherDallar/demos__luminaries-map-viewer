@@ -13,6 +13,8 @@ export class ToolBarFormComponent implements OnInit {
   constructor(private luminariesService: LuminariesService) {}
 
   ngOnInit(): void {
-    this.fields = this.luminariesService.getFields()
+    this.luminariesService.changeFieldsEmitter.subscribe((data) => {
+      this.fields = this.luminariesService.getFields()
+    })
   }
 }
