@@ -2,7 +2,7 @@
   <div class="d-flex gap-2">
     <ng-container *ngFor="let item of menuItems">
       <i
-        [ngClass]="{ 'icon-active': item.active }"
+        routerLinkActive="icon-active"
         class="{{
           item.iconClass
         }} icon-button fs-5 p-2 shadow-sm bg-body rounded"

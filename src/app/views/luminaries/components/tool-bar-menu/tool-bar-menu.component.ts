@@ -26,16 +26,7 @@ export class ToolBarMenuComponent implements OnInit {
     }
   }
 
-  setActiveIcon(menuItem: MenuItem) {
-    this.menuItems.map((item) => {
-      item.active = menuItem === item
-      return item
-    })
-  }
-
   handleClick(menuItem: MenuItem) {
     this.currentTitle = menuItem.title
-
-    this.setActiveIcon(menuItem)
   }
 }
