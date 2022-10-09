@@ -10,6 +10,7 @@ import {
   ToolBarGraphicComponent,
 } from './'
 import { LeafletModule } from '@asymmetrik/ngx-leaflet'
+import { FormsModule } from '@angular/forms'
 
 const components = [
   ToolBarFormComponent,
@@ -22,7 +23,7 @@ const components = [
 
 @NgModule({
   declarations: components,
-  imports: [CommonModule, LuminariesRoutingModule, LeafletModule],
+  imports: [CommonModule, LuminariesRoutingModule, FormsModule, LeafletModule],
   exports: components,
 })
 export class LuminariesComponentsModule {}
