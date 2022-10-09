@@ -1,7 +1,9 @@
 <ng-container *ngIf="fields.length > 0; else initialMsg">
-  <ng-container *ngFor="let field of fields">
-    <app-tool-bar-form-field [field]="field"></app-tool-bar-form-field>
-  </ng-container>
+  <div class="container overflow-auto">
+    <ng-container *ngFor="let field of fields">
+      <app-tool-bar-form-field [field]="field"></app-tool-bar-form-field>
+    </ng-container>
+  </div>
 </ng-container>
 
 <ng-template #initialMsg>

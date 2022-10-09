@@ -7,7 +7,11 @@
   padding: 1rem;
 
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   z-index: 1001;
+}
+
+.outlet-container {
+  height: 90%;
 }

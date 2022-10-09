@@ -19,7 +19,7 @@ export class ToolBarMenuComponent implements OnInit {
       const menuItemActive = this.menuItems.find((item) => item.active)
 
       if (menuItemActive) {
-        title = menuItemActive.path
+        title = menuItemActive.title
       }
 
       this.currentTitle = title
