@@ -38,6 +38,8 @@ export class LuminariesMapComponent implements OnInit {
     [37.70590845000001, -3.98959274],
   ])
 
+  prevPointLayer?: any
+
   constructor() {
     this.baseLayer = tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -64,10 +66,11 @@ export class LuminariesMapComponent implements OnInit {
     ).json()
 
     const options: GeoJSONOptions = {
-      pointToLayer: (feature: GeoJSON.Feature, latLng: LatLng) =>
-        circleMarker(latLng).on('click', (event) => {
+      pointToLayer: (feature: GeoJSON.Feature, latLng: LatLng) => {
+        return circleMarker(latLng).on('click', (event) => {
           this.handleClickToMarker(event)
-        }),
+        })
+      },
       style: (feature) => ({
         radius: 8,
         color: '#333',
@@ -81,7 +84,26 @@ export class LuminariesMapComponent implements OnInit {
     geoJSON(luminaires, options).addTo(this.map)
   }
 
-  handleClickToMarker({ target }: any, emitter = this.pointMarkerSelected) {
+  handleClickToMarker(event: any, emitter = this.pointMarkerSelected) {
+    if (!this.map) return
+
+    const { target } = event
     emitter.emit(target.feature)
+
+    let layer = event.target
+
+    if (this.prevPointLayer) {
+      this.prevPointLayer.setStyle({
+        fillColor: '#0000ff5b',
+      })
+    }
+
+    layer.setStyle({
+      fillColor: '#0000ff',
+    })
+
+    this.map.setView(event.latlng, 16)
+
+    this.prevPointLayer = layer
   }
 }
