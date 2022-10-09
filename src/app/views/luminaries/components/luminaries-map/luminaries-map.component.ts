@@ -81,10 +81,6 @@ export class LuminariesMapComponent implements OnInit {
     geoJSON(luminaires, options).addTo(this.map)
   }
 
-  test() {
-    // this.pointMarkerSelected.emit('yees')
-  }
-
   handleClickToMarker({ target }: any, emitter = this.pointMarkerSelected) {
     emitter.emit(target.feature)
   }
