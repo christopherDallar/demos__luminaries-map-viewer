@@ -17,6 +17,14 @@ const routes: Routes = [
         path: 'analisis-grafico',
         component: ToolBarGraphicComponent,
       },
+      {
+        path: '',
+        redirectTo: 'informacion-elemento',
+      },
+      {
+        path: '**',
+        redirectTo: 'informacion-elemento',
+      },
     ],
   },
 ]
