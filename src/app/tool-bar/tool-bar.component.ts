@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { menuItem } from './../types'
+import { menuItem } from '@appTypes/tool-bar.types'
 
 @Component({
   selector: 'app-tool-bar',
