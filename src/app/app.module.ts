@@ -5,11 +5,15 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
+import { ToolBarFormComponent } from './tool-bar-form/tool-bar-form.component';
+import { ToolBarInitialMsgComponent } from './tool-bar-initial-msg/tool-bar-initial-msg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolBarComponent
+    ToolBarComponent,
+    ToolBarFormComponent,
+    ToolBarInitialMsgComponent
   ],
   imports: [
     BrowserModule,
