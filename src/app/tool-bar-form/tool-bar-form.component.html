@@ -1,1 +1,9 @@
-<app-tool-bar-initial-msg></app-tool-bar-initial-msg>
+<ng-container *ngIf="fields.length > 0; else initialMsg">
+  <ng-container *ngFor="let field of fields">
+    <app-tool-bar-form-field [field]="field"></app-tool-bar-form-field>
+  </ng-container>
+</ng-container>
+
+<ng-template #initialMsg>
+  <app-tool-bar-initial-msg></app-tool-bar-initial-msg>
+</ng-template>

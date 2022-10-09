@@ -1,1 +1,8 @@
-<p>tool-bar-form-field works!</p>
+<div class="row">
+  <div class="col">
+    <p>{{ field.label }}</p>
+  </div>
+  <div class="col">
+    <input type="text" [value]="field.value" readonly />
+  </div>
+</div>

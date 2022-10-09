@@ -4,3 +4,8 @@ export type MenuItem = {
   title: string
   active?: boolean
 }
+
+export type FormField = {
+  label: string
+  value: string | boolean | number
+}

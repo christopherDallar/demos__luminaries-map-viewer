@@ -26,6 +26,9 @@
       "@appTypes/*": [
         "src/app/types/*"
       ],
+      "@services/*": [
+        "src/app/data/services/*"
+      ],
     }
   },
   "angularCompilerOptions": {
