@@ -11,37 +11,3 @@
   right: 0;
   z-index: 1001;
 }
-
-.icon-button {
-  cursor: pointer;
-
-  animation-name: icon-when-page-load;
-  animation-duration: 0.5s;
-  animation-iteration-count: 8;
-  animation-direction: alternate;
-  animation-timing-function: linear;
-}
-
-.icon-button:first-child {
-  animation-direction: alternate-reverse;
-}
-
-.icon-button:hover {
-  color: green;
-}
-
-.icon-button:active {
-  transform: scale(1.1);
-  transition: 0.5s;
-}
-
-@keyframes icon-when-page-load {
-  0% {
-    color: green;
-    transform: scale(1);
-  }
-  100% {
-    color: green;
-    transform: scale(1.1);
-  }
-}
