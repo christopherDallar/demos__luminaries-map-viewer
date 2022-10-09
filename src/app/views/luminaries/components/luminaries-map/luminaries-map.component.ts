@@ -5,7 +5,6 @@ import {
   GeoJSONOptions,
   LatLng,
   LatLngBounds,
-  Layer,
   Map,
   MapOptions,
   tileLayer,
@@ -24,10 +23,11 @@ export class LuminariesMapComponent implements OnInit {
 
   map?: Map
 
+  initialLatLng = new LatLng(37.59013677986163, -4.079138223556711)
+
   mapOptions: MapOptions = {
     zoom: 17,
     zoomControl: false,
-    center: [40.395347, -3.694041],
     preferCanvas: true,
   }
 
@@ -48,7 +48,7 @@ export class LuminariesMapComponent implements OnInit {
         className: 'OSM',
         maxNativeZoom: 19,
         maxZoom: 22,
-        minZoom: 5,
+        minZoom: 13,
       },
     )
   }
@@ -56,6 +56,7 @@ export class LuminariesMapComponent implements OnInit {
   onMapReady(map: Map): void {
     this.map = map
     this.addLuminariesLayer()
+    this.map.setView(this.initialLatLng, 16)
   }
 
   private async addLuminariesLayer(): Promise<void> {
@@ -86,6 +87,7 @@ export class LuminariesMapComponent implements OnInit {
 
   handleClickToMarker(event: any, emitter = this.pointMarkerSelected) {
     if (!this.map) return
+    console.log(event)
 
     const { target } = event
     emitter.emit(target.feature)
