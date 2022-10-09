@@ -1,4 +1,6 @@
-<app-luminaries-map></app-luminaries-map>
+<app-luminaries-map
+  (pointMarkerSelected)="handlePointMarked($event)"
+></app-luminaries-map>
 
 <div class="container">
   <app-tool-bar-menu [menuItems]="menuItems"></app-tool-bar-menu>

@@ -24,4 +24,8 @@ export class LuminariesMapViewerComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  handlePointMarked(event: any) {
+    console.log('handlePointMarked', event)
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import {
   circleMarker,
   geoJSON,
@@ -18,6 +18,8 @@ import {
   styleUrls: ['./luminaries-map.component.css'],
 })
 export class LuminariesMapComponent implements OnInit {
+  @Output() pointMarkerSelected: EventEmitter<any> = new EventEmitter()
+
   ngOnInit(): void {}
 
   map?: Map
@@ -51,10 +53,10 @@ export class LuminariesMapComponent implements OnInit {
 
   onMapReady(map: Map): void {
     this.map = map
-    this.addLuminairesLayer()
+    this.addLuminariesLayer()
   }
 
-  private async addLuminairesLayer(): Promise<void> {
+  private async addLuminariesLayer(): Promise<void> {
     if (!this.map) return
 
     const luminaires = await (
@@ -63,7 +65,9 @@ export class LuminariesMapComponent implements OnInit {
 
     const options: GeoJSONOptions = {
       pointToLayer: (feature: GeoJSON.Feature, latLng: LatLng) =>
-        circleMarker(latLng),
+        circleMarker(latLng).on('click', (event) => {
+          this.handleClickToMarker(event)
+        }),
       style: (feature) => ({
         radius: 8,
         color: '#333',
@@ -75,5 +79,13 @@ export class LuminariesMapComponent implements OnInit {
     }
 
     geoJSON(luminaires, options).addTo(this.map)
+  }
+
+  test() {
+    // this.pointMarkerSelected.emit('yees')
+  }
+
+  handleClickToMarker({ target }: any, emitter = this.pointMarkerSelected) {
+    emitter.emit(target.feature)
   }
 }
