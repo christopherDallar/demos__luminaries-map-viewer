@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { menuItem } from './../types'
 
 @Component({
   selector: 'app-tool-bar',
   templateUrl: './tool-bar.component.html',
-  styleUrls: ['./tool-bar.component.css']
+  styleUrls: ['./tool-bar.component.css'],
 })
 export class ToolBarComponent implements OnInit {
+  menuItems: menuItem[] = [
+    {
+      path: 'informacion-elemento',
+      iconClass: 'fa-solid fa-circle-info',
+      title: 'Información de elemento',
+      active: true,
+    },
+    {
+      path: 'informacion-elemento',
+      iconClass: 'fa-solid fa-circle-info',
+      title: 'Información de elemento',
+    },
+  ]
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
