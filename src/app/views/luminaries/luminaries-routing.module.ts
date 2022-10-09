@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./views/luminaries/luminaries.module').then(
-        (m) => m.LuminariesModule,
+      import('./pages/luminaries-map-viewer/luminaries-map-viewer.module').then(
+        (m) => m.LuminariesMapViewerModule,
       ),
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class LuminariesRoutingModule {}

@@ -24,7 +24,7 @@
     ],
     "paths": {
       "@appTypes/*": [
-        "src/app/types/*"
+        "src/app/views/luminaries/types/*"
       ],
       "@services/*": [
         "src/app/data/services/*"

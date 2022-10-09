@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { FormField } from '@appTypes/tool-bar.types'
+import { FormField } from 'src/app/views/luminaries/types/tool-bar.types'
 
 @Injectable({
   providedIn: 'root',

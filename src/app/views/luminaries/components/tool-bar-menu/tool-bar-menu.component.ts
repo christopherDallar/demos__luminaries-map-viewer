@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { MenuItem } from '@appTypes/tool-bar.types'
+import { MenuItem } from 'src/app/views/luminaries/types/tool-bar.types'
 
 @Component({
   selector: 'app-tool-bar-menu',

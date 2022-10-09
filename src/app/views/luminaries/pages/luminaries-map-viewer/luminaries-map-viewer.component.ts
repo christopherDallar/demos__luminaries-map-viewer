@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { MenuItem } from '@appTypes/tool-bar.types'
 
 @Component({
-  selector: 'app-tool-bar',
-  templateUrl: './tool-bar.component.html',
-  styleUrls: ['./tool-bar.component.css'],
+  selector: 'app-luminaries-map-viewer',
+  templateUrl: './luminaries-map-viewer.component.html',
+  styleUrls: ['./luminaries-map-viewer.component.css'],
 })
-export class ToolBarComponent implements OnInit {
+export class LuminariesMapViewerComponent implements OnInit {
   menuItems: MenuItem[] = [
     {
       path: 'informacion-elemento',

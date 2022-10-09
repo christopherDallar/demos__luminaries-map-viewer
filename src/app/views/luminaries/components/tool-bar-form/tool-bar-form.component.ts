@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormField } from '@appTypes/tool-bar.types'
+import { FormField } from 'src/app/views/luminaries/types/tool-bar.types'
 import { LuminariesService } from '@services/luminaries/luminaries.service'
 
 @Component({

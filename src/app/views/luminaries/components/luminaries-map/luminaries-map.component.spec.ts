@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolBarComponent } from './tool-bar.component';
+import { LuminariesMapComponent } from './luminaries-map.component';
 
-describe('ToolBarComponent', () => {
-  let component: ToolBarComponent;
-  let fixture: ComponentFixture<ToolBarComponent>;
+describe('LuminariesMapComponent', () => {
+  let component: LuminariesMapComponent;
+  let fixture: ComponentFixture<LuminariesMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToolBarComponent ]
+      declarations: [ LuminariesMapComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolBarComponent);
+    fixture = TestBed.createComponent(LuminariesMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
