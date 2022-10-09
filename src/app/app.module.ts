@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { ToolBarFormComponent } from './tool-bar-form/tool-bar-form.component';
 import { ToolBarInitialMsgComponent } from './tool-bar-initial-msg/tool-bar-initial-msg.component';
+import { ToolBarFormFieldComponent } from './tool-bar-form-field/tool-bar-form-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolBarComponent,
     ToolBarFormComponent,
-    ToolBarInitialMsgComponent
+    ToolBarInitialMsgComponent,
+    ToolBarFormFieldComponent
   ],
   imports: [
     BrowserModule,
