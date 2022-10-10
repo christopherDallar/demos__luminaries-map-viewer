@@ -11,6 +11,7 @@ import {
   tileLayer,
   TileLayer,
 } from 'leaflet'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-luminaries-map',
@@ -41,7 +42,10 @@ export class LuminariesMapComponent implements OnInit {
 
   prevPointLayer?: any
 
-  constructor(private luminariesService: LuminariesService) {
+  constructor(
+    private luminariesService: LuminariesService,
+    private router: Router,
+  ) {
     this.baseLayer = tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -105,5 +109,10 @@ export class LuminariesMapComponent implements OnInit {
     this.map.setView(event.latlng, 16)
 
     this.prevPointLayer = layer
+
+    const currentPath = this.router.url.slice(1, this.router.url.length)
+    if (currentPath !== 'informacion-elemento') {
+      this.router.navigate(['informacion-elemento'])
+    }
   }
 }

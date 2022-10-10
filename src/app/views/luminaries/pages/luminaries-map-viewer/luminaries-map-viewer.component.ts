@@ -13,7 +13,6 @@ export class LuminariesMapViewerComponent implements OnInit {
       path: 'informacion-elemento',
       iconClass: 'fa-solid fa-circle-info',
       title: 'Información de elemento',
-      active: true,
     },
     {
       path: 'analisis-grafico',

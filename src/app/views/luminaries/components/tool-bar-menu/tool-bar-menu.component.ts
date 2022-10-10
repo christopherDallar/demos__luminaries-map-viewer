@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Router } from '@angular/router'
 import { MenuItem } from 'src/app/views/luminaries/types/tool-bar.types'
 
 @Component({
@@ -13,13 +14,16 @@ export class ToolBarMenuComponent implements OnInit {
   rotateArrowBtn = false
   currentTitle = ''
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     if (this.menuItems.length > 0) {
       let title = this.menuItems[0].title
 
-      const menuItemActive = this.menuItems.find((item) => item.active)
+      const currentPath = this.router.url.slice(1, this.router.url.length)
+      const menuItemActive = this.menuItems.find(
+        (item) => item.path === currentPath,
+      )
 
       if (menuItemActive) {
         title = menuItemActive.title
