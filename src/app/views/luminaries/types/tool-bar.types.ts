@@ -9,3 +9,9 @@ export type FormField = {
   label: string
   value: string | boolean | number
 }
+
+export type chartData = {
+  name: string
+  y: number
+  color: string
+}

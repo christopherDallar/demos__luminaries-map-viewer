@@ -1,11 +1,29 @@
 <div class="row">
   <div class="mb-5">
     <span>Atributo:</span>
-    <select class="form-select form-select-sm" [(ngModel)]="selectValue">
-      <option value="0" selected>Seleccione un atributo</option>
-      <option value="tipo_soporte">Tipo soporte</option>
-      <option value="tipo_luminaria">Tipo luminaria</option>
-      <option value="tipo_lampara">Tipo lampara</option>
+    <select
+      class="form-select form-select-sm"
+      (change)="handleChangeSelect($event)"
+    >
+      <ng-container *ngFor="let option of options">
+        <option [value]="option.value">{{ option.label }}</option>
+      </ng-container>
     </select>
   </div>
 </div>
+
+<!-- <ng-container *ngIf="chartTitle !== '0'"> -->
+<div class="row">
+  <div>
+    <ng-container #outlet></ng-container>
+  </div>
+</div>
+<!-- </ng-container> -->
+
+<ng-template #luminariesChart>
+  <app-luminaries-chart
+    [data]="chartData"
+    [title]="chartTitle"
+    [totalLuminaries]="totalLuminaries"
+  ></app-luminaries-chart>
+</ng-template>
