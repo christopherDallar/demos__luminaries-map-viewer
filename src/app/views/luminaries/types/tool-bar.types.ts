@@ -13,5 +13,9 @@ export type FormField = {
 export type chartData = {
   name: string
   y: number
-  color: string
+  color?: string
 }
+export type luminariesAnalyticAttr =
+  | 'tipo_soporte'
+  | 'tipo_luminaria'
+  | 'tipo_lampara'

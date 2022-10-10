@@ -5,7 +5,9 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core'
-import { chartData } from '@appTypes/tool-bar.types'
+import { chartData, luminariesAnalyticAttr } from '@appTypes/tool-bar.types'
+import { luminariesGeoJson } from '@services/luminaries/luminaries-web-repository.entity'
+import { LuminariesService } from '@services/luminaries/luminaries.service'
 
 @Component({
   selector: 'app-tool-bar-graphic',
@@ -17,6 +19,8 @@ export class ToolBarGraphicComponent implements OnInit {
   @ViewChild('luminariesChart', { read: TemplateRef }) contentRef?: TemplateRef<
     any
   >
+
+  luminariesGeoJson?: any
 
   options = [
     {
@@ -41,13 +45,11 @@ export class ToolBarGraphicComponent implements OnInit {
   totalLuminaries = 0
   chartData: chartData[] = []
 
-  constructor() {}
+  constructor(private luminariesData: LuminariesService) {}
 
-  ngOnInit(): void {}
-
-  ngAfterContentInit() {
-    // if (!(this.outletRef && this.contentRef)) return
-    // this.outletRef.createEmbeddedView(this.contentRef)
+  async ngOnInit() {
+    this.luminariesGeoJson = await this.luminariesData.getGeoJson()
+    this.totalLuminaries = this.luminariesGeoJson.features.length
   }
 
   rerender(create = true) {
@@ -57,8 +59,8 @@ export class ToolBarGraphicComponent implements OnInit {
     this.outletRef.createEmbeddedView(this.contentRef)
   }
 
-  getTitle(key: 'tipo_soporte' | 'tipo_luminaria' | 'tipo_lampara') {
-    const titles = {
+  getTitle(key: string) {
+    const titles: any = {
       tipo_soporte: 'Tipo soporte',
       tipo_luminaria: 'Tipo luminaria',
       tipo_lampara: 'Tipo lampara',
@@ -73,20 +75,54 @@ export class ToolBarGraphicComponent implements OnInit {
       return
     }
 
-    this.setChartProps(this.getTitle(event.target.value))
+    this.setChartProps(event.target.value)
     this.rerender()
   }
 
-  setChartProps(title: string) {
-    this.chartData = [
-      {
-        name: 'hello',
-        color: 'blue',
-        y: 1,
-      },
-    ]
+  getAttrAnalyticData(attr: any) {
+    if (!this.luminariesGeoJson) return
 
-    this.chartTitle = title
-    this.totalLuminaries = 1000
+    const { features } = this.luminariesGeoJson
+
+    const valuesToGroup = []
+
+    for (let index = 0; index < features.length; index++) {
+      const { properties } = features[index]
+
+      const objetIncludeProperty = Object.getOwnPropertyNames(
+        properties,
+      ).includes(attr)
+
+      if (!objetIncludeProperty || !properties[attr]) continue
+
+      valuesToGroup.push(properties[attr])
+    }
+
+    let valuesGrouped: any = {}
+
+    for (let index = 0; index < valuesToGroup.length; index++) {
+      const value = valuesToGroup[index]
+      const wasSavedProp = Object.keys(valuesGrouped).includes(value)
+
+      if (wasSavedProp) {
+        valuesGrouped[value] += 1
+        continue
+      }
+
+      valuesGrouped[value] = 1
+    }
+
+    return valuesGrouped
+  }
+
+  setChartProps(value: string) {
+    const valuesGrouped = this.getAttrAnalyticData(value)
+
+    this.chartData = Object.keys(valuesGrouped).map((key) => ({
+      name: key,
+      y: valuesGrouped[key],
+    }))
+
+    this.chartTitle = this.getTitle(value)
   }
 }

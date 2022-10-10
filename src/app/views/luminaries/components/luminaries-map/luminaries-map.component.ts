@@ -1,3 +1,4 @@
+import { LuminariesService } from '@services/luminaries/luminaries.service'
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import {
   circleMarker,
@@ -40,7 +41,7 @@ export class LuminariesMapComponent implements OnInit {
 
   prevPointLayer?: any
 
-  constructor() {
+  constructor(private luminariesService: LuminariesService) {
     this.baseLayer = tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -62,9 +63,7 @@ export class LuminariesMapComponent implements OnInit {
   private async addLuminariesLayer(): Promise<void> {
     if (!this.map) return
 
-    const luminaires = await (
-      await fetch('assets/data/luminarias.geojson')
-    ).json()
+    const luminaires = await this.luminariesService.getGeoJson()
 
     const options: GeoJSONOptions = {
       pointToLayer: (feature: GeoJSON.Feature, latLng: LatLng) => {
@@ -87,7 +86,6 @@ export class LuminariesMapComponent implements OnInit {
 
   handleClickToMarker(event: any, emitter = this.pointMarkerSelected) {
     if (!this.map) return
-    console.log(event)
 
     const { target } = event
     emitter.emit(target.feature)

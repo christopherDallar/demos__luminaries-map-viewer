@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core'
-import { FormField } from 'src/app/views/luminaries/types/tool-bar.types'
-
+import { FormField, luminariesAnalyticAttr } from '@appTypes/tool-bar.types'
+import { luminariesGeoJson } from './luminaries-web-repository.entity'
 @Injectable({
   providedIn: 'root',
 })
@@ -24,5 +24,9 @@ export class LuminariesService {
     this.fields = fieldsMapper
 
     this.changeFieldsEmitter.emit()
+  }
+
+  async getGeoJson() {
+    return await (await fetch('assets/data/luminarias.geojson')).json()
   }
 }
